@@ -1,0 +1,82 @@
+/* Reset some default browser styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #e0e0e0;
+    padding: 20px;  /* Ensure some padding for mobile devices */
+}
+
+.container {
+    background: #1e1e1e;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 50%;  /* Default to 50% width */
+    max-width: 600px;  /* Prevent excessively wide containers on large screens */
+}
+
+h1 {
+    margin-bottom: 24px;
+    font-size: 24px;
+    color: #bb86fc;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: normal;
+    font-size: 14px;
+    color: #e0e0e0;
+}
+
+input[type="text"] {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #e0e0e0;
+    background-color: #333;
+}
+
+input[type="text"]:focus {
+    border-color: #bb86fc;
+    outline: none;
+}
+
+button {
+    padding: 12px;
+    background-color: #bb86fc;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #8a2be2;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;  /* 95% width on mobile devices */
+    }
+}
