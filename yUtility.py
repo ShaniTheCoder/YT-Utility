@@ -11,7 +11,7 @@ class YoutubeUtility:
         self.yt = YouTube(self.url)
 
     def download_youtube_thumbnail(self):
-        thumbnail = self.yt.thumbnail_url        
+        thumbnail = self.yt.thumbnail_url
         parsed_url = urlparse(thumbnail)
         file_name = parsed_url.path.split("/")[-1]
         save_path = f"{self.download_path}/{file_name}" if self.download_path else file_name
@@ -21,12 +21,15 @@ class YoutubeUtility:
                 request.raw.decode_content = True
                 copyfileobj(request.raw, file)
                 print('Thumbnail downloaded')
+            return save_path
         else:
             print(f'Unable to download thumbnail, error code - {request.status_code}')
+            return None
 
     def download_youtube_video(self):
         stream = self.yt.streams.get_highest_resolution()
-        stream.download(self.download_path)
+        video_path = stream.download(self.download_path)
+        return video_path
 
     def download_playlist_videos(self):
         playlist = Playlist(self.url)
@@ -45,3 +48,7 @@ class YoutubeUtility:
         except Exception as e:
             print(f"Error getting video title: {e}")
             return None
+
+if __name__ == '__main__':
+    yt = YoutubeUtility("https://youtu.be/A74TOX803D0?si=kmmbo5CysSSn_g_z","/")
+    yt.download_youtube_video()
